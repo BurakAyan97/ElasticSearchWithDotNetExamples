@@ -1,6 +1,8 @@
 using Elasticsearch.Net;
 using Nest;
 using ElasticSearch.API.Extensions;
+using ElasticSearch.API.Services;
+using ElasticSearch.API.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddElasticSearch(builder.Configuration);
+builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ProductRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
